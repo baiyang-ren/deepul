@@ -5,6 +5,10 @@ import torch.nn.functional as F
 from torch.utils import data
 import matplotlib.pyplot as plt
 import torch.optim as optim
+import os
+import sys
+os.chdir(os.path.dirname(os.path.abspath(__file__)))
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../..")))
 
 from deepul.utils import (
     get_data_dir,
