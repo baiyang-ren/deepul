@@ -160,10 +160,10 @@ train_data, test_data, d= q1_sample_data_2(d=100)
 # Data loaders for minibatch training
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 print(f"Using device: {device}")
-model = DiscretizedLogisticMixture(d=d, n_mix=4).to(device)
+model = DiscretizedLogisticMixture(d=d, n_mix=6).to(device)
 train_loader = data.DataLoader(train_data, batch_size=256, shuffle=True)
 test_loader = data.DataLoader(test_data, batch_size=256)    
-train_losses, test_losses = train_epochs(model, train_loader, test_loader,epochs=20, lr=1e-1)
+train_losses, test_losses = train_epochs(model, train_loader, test_loader,epochs=40, lr=1e-1)
 distribution = model.get_distribution()
 
 save_training_plot(
