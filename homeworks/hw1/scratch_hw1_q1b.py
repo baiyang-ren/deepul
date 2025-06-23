@@ -152,7 +152,8 @@ class DiscretizedLogisticMixture(nn.Module):
 
     def get_distribution(self):
         with torch.no_grad():
-            x = torch.FloatTensor(np.arange(self.d)).cuda()
+            x = torch.FloatTensor(np.arange(self.d)).to(self.logits.device)
+            
             distribution = self(x).exp()
         return distribution.detach().cpu().numpy()
     
