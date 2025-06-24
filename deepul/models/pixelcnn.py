@@ -48,10 +48,14 @@ class PixelCNN(nn.Module):
         x = self.conv1(x)
         x = F.relu(x)
         for conv in self.conv2:
+            residual = x
             x = conv(x)
+            x = x + residual
             x = F.relu(x)
         for conv in self.conv3:
+            residual = x
             x = conv(x)
+            x = x + residual
             x = F.relu(x)
         x = self.output(x)
         return x 
